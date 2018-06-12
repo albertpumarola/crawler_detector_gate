@@ -1,0 +1,18 @@
+<launch>
+
+    <node pkg="crawler_detector_gate" type="crawler_detector_gate_node" name="crawler_detector_gate" output="screen">
+        <param name="cam_tf_name" value="cam"/>
+        <param name="gt_crawler_tf_name" value="crawler"/>
+        <param name="estimated_crawler_tf_name" value="estim_crawler"/>
+        <param name="estimated_crawler_box_namespace" value="crawler/estim_box"/>
+        <param name="gt_crawler_box_namespace" value="crawler/gt_box"/>
+        <param name="max_publish_wait_time" value="1"/>
+        <param name="max_tags_delay_wait_factor" value="10"/>
+
+        <remap from="~pose_from_deep_input" to="/crawler/pose_from_deep"/>
+        <remap from="~pose_from_tags_input" to="/crawler/pose_from_tags"/>
+        <remap from="~pose_output" to="/crawler/pose"/>
+        <remap from="~source_output" to="/crawler/pose_source"/>
+    </node>
+
+</launch>
